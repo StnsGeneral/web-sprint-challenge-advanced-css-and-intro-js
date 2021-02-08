@@ -1,4 +1,4 @@
-export const artists = [{
+const artists = [{
     "id": 0,
     "name": "Amedeo Modigliani",
     "years": "1884 - 1920",
@@ -245,7 +245,9 @@ If correct, the function should return ["Salvador Dali", "Frida Kahlo"]*/
 function get20s(arr) {
   let newArray = []
   for (let i = 0; i < arr.length; i++) {
-    newArray.push(arr[i].find(years => years > 1900 || years <= 2000))
+    if (arr[i].years.split(" ")[0] >= 1900 && arr[i].years.split(" ")[2] <= 2000) {
+      newArray.push(arr[i].name)
+    }
   }
   return newArray
 }
@@ -305,10 +307,10 @@ Use lotsOfArt to do the following:
 For example lotsOfArt(artists); will return ["Amedeo Modigliani", "Rene Magritte", ... "Albrecht Dürer"]*/
 
 function lotsOfArt(arr) {
-  newArray = []
+  let newArray = []
   for (let i = 0; i < arr.length; i++) {
     if (arr[i].paintings > 100) {
-      newArray.push(arr[i])
+      newArray.push(arr[i].name)
     }
   }
   return newArray
